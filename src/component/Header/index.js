@@ -142,7 +142,7 @@ export default function Header(params) {
                         <img className="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" />
                     </a>
                     <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <Link to="/user" className="dropdown-item">
+                        <Link to="/app/user" className="dropdown-item">
                             <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </Link>

@@ -3,11 +3,11 @@ import SideBar from '../FixedSidebar';
 import RightBar from '../RightBar';
 import Header from '../Header';
 import Home from '../../pages/home';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter, useRouteMatch } from 'react-router-dom';
 import Profile from '../../pages/profile';
 
-
-export default function Main() {
+function Main() {
+    let { path } = useRouteMatch();
     return (
         <div>
             <SideBar />
@@ -16,10 +16,12 @@ export default function Main() {
             <div className="header-spacer"></div>
             <div className="container">
                 <Switch>
-                    <Route exact path='/' children={<Home />} />
-                    <Route exact path='/user' children={<Profile />} />
+                    <Route path={`${path}`} component={Home} />
+                    <Route path={`${path}/user`} component={Profile} />
                 </Switch>
             </div>
         </div>
     )
 }
+
+export default withRouter(Main);

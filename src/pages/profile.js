@@ -1,9 +1,11 @@
 import React from 'react';
-import { useParams, Switch, Route, useRouteMatch } from 'react-router-dom';
+import { useParams, Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 import Photo from './photo';
 import About from './about';
 
 export default function Profile(props) {
+    let { path, url } = useRouteMatch();
+    console.log(path);
     return (
         <div>
             <div className="row">
@@ -21,7 +23,7 @@ export default function Profile(props) {
                                                 <a href="02-ProfilePage.html" className="active">Timeline</a>
                                             </li>
                                             <li>
-                                                <a href="05-ProfilePage-About.html">About</a>
+                                                <Link to={`${url}/about`} >About</Link>
                                             </li>
                                             <li>
                                                 <a href="06-ProfilePage.html">Friends</a>
@@ -104,8 +106,8 @@ export default function Profile(props) {
                 </div>
             </div >
             <Switch>
-                <Route path={`/`} children={<Photo />} />
-                <Route path={`/about`} children={<About />} />
+                <Route path={`${path}`}><About /></Route>
+                <Route path={`${path}/:id`} ><Photo /></Route>
             </Switch>
         </div >
     )
