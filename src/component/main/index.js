@@ -8,6 +8,7 @@ import Profile from '../../pages/profile';
 
 function Main() {
     let { path } = useRouteMatch();
+    console.log(path)
     return (
         <div>
             <SideBar />
@@ -16,8 +17,8 @@ function Main() {
             <div className="header-spacer"></div>
             <div className="container">
                 <Switch>
-                    <Route path={`${path}`} component={Home} />
-                    <Route path={`${path}/user`} component={Profile} />
+                    <Route exact path={`${path}`} component={Home} />
+                    <Route path={`${path}/user`} children={<Profile />} />
                 </Switch>
             </div>
         </div>
